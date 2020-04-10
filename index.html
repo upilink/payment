@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+
+<body onload=myFunction()>
+
+<script>
+function myFunction() {
+  var x = document.URL;
+  var y = x.split("?");
+  document.getElementById("copybtn").style.display = "none";
+  if (y.length==1){
+ document.getElementById("paymentdiv").style.display = "none";
+ }
+ else{
+ document.getElementById("form").style.display = "none";
+ var z=y[1]+"?"+y[2];
+ document.getElementById("payment").href = z;
+ location.replace(z);
+ }  
+}
+
+function showInput(){
+document.getElementById('display').innerHTML ="https://harshil-chaudhary.github.io/upilink/?upi://pay?pa="+document.getElementById("vpa").value+"@"+document.getElementById("ext").value+"&pn="+document.getElementById("name").value+"&tn="+document.getElementById("note").value+"&am="+document.getElementById("amt").value;
+document.getElementById("copybtn").style.display = "inline";
+}
+
+function copyfunction() {
+var range = document.createRange();
+                    range.selectNode(document.getElementById("display"));
+                    window.getSelection().removeAllRanges(); // clear current selection
+                    window.getSelection().addRange(range); // to select text
+                    document.execCommand("copy");
+                    window.getSelection().removeAllRanges();
+}
+</script>
+<div id="paymentdiv"  >
+<p>Click on <b>make payment</b> to proceed.</p>
+<a id="payment" href="">make payment</a>
+</div>
+<div id="form">
+<form>
+  <label for="vpa">UPI :</label>
+  <input type="text" id="vpa" name="vpa" value="">
+  <label for="ext"> @ </label>
+  <input type="text" id="ext" name="ext" value=""><br><br>
+  <label for="name"> Name </label>
+  <input type="text" id="name" name="name" value=""><br><br>
+  <label for="note"> Note </label>
+  <input type="text" id="note" name="note" value=""><br><br>
+  <label for="amt"> Amount </label>
+  <input type="text" id="amt" name="amt" value=""><br><br>
+  
+</form>
+<input type="submit" value="Generate" onclick="showInput()">
+<p><span id="display"></span></p>
+<button id="copybtn" onclick="copyfunction()">Copy link</button>
+</div>
+<p>Note :Use it at your own risk, I am not responsible for any damages caused</p>
+</body>
+</html>
