@@ -5,9 +5,7 @@
 <body onload=myFunction()>
 
 <script>
-function disablePayment(){
-  document.getElementById("payment").href = "";
-}
+
 function myFunction() {
   var x = document.URL;
   var y = x.split("?");
@@ -20,7 +18,6 @@ function myFunction() {
  var z=y[1]+"?"+y[2];
  document.getElementById("payment").href = z;
  location.replace(z);
- setTimeout(disablePayment, 9000);
  }  
 }
 
